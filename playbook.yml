@@ -27,16 +27,20 @@
       - python-mysqldb
       - apache2
       
+  - name: Remove test DB
+    mysql_db:
+      db: test
+      state: absent
+
   - name: Create a new database with name 'this_is_a_dummy_database'
     mysql_db:
       name: this_is_a_dummy_data_database
       state: present
-      login_user: root
 
-  - name: update mysql root password for all root accounts
-    mysql_user: 
-      name: root 
-      password: change_this_password
+#  - name: update mysql root password for all root accounts
+#    mysql_user: 
+#      name: root 
+#      password: change_this_password
 
 
   - name: create /var/www/ directory
