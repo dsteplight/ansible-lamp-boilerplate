@@ -1,6 +1,10 @@
 ---
 - hosts: all
   become: yes
+
+  vars_files:
+  - vars.yml
+
   tasks:
 #  - name: Ensure NTP (for time sychronization) is installed.
 #    yum: name=ntp state-present
