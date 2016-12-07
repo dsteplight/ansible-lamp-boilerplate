@@ -47,3 +47,21 @@
 
   - name: create /var/www/ directory
     file: dest=/var/www/ state=directory owner=www-data group=www-data mode=0700
+
+
+  - name: Download Composer Installer
+    get_url: 
+      url: https://getcomposer.org/installer
+      dest: /tmp/composer-install.php
+      mode: 0755
+
+  - name: Run Composers Installer
+    command: > 
+      php composer-install.php
+      chdir=/tmp
+      creates=/usr/local/bin/composer
+
+  - name: Move Composer into globally-accessible location
+    shell: > 
+      mv /tmp/composer.phar /usr/local/bin/composer
+      creates=/usr/local/bin/composer
