@@ -25,8 +25,9 @@
       - libapache2-mod-auth-mysql
       - php5-mysql
       - python-mysqldb
+      - apache2
       
-  - name: Create a new database with name 'this_is_a_dummy_data_database'
+  - name: Create a new database with name 'this_is_a_dummy_database'
     mysql_db:
       name: this_is_a_dummy_data_database
       state: present
