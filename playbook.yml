@@ -37,10 +37,12 @@
       name: this_is_a_dummy_data_database
       state: present
 
-#  - name: update mysql root password for all root accounts
-#    mysql_user: 
-#      name: root 
-#      password: change_this_password
+  - name: creating an user with admin priviledges
+    mysql_user: 
+      name: admin 
+      password: admin
+      priv: '*.*:ALL,GRANT'
+      state: present
 
 
   - name: create /var/www/ directory
