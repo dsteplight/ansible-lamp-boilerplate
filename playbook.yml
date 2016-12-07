@@ -1,0 +1,42 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+#  - name: Ensure NTP (for time sychronization) is installed.
+#    yum: name=ntp state-present
+#  - name: Ensure NTP is running.
+#    service: name=ntpd state=started enabled=yes
+
+  - name: install packages
+    apt: name={{ item }} update_cache=yes state=latest
+    with_items:
+      - git
+      - mcrypt
+      - nginx
+      - php5-cli
+      - php5-curl
+      - php5-fpm
+      - php5-intl
+      - php5-json
+      - php5-mcrypt
+      - php5-sqlite
+      - sqlite3
+      - mysql-server
+      - libapache2-mod-auth-mysql
+      - php5-mysql
+      - python-mysqldb
+      
+  - name: Create a new database with name 'this_is_a_dummy_data_database'
+    mysql_db:
+      name: this_is_a_dummy_data_database
+      state: present
+      login_user: root
+
+  - name: update mysql root password for all root accounts
+    mysql_user: 
+      name: root 
+      password: change_this_password
+
+
+  - name: create /var/www/ directory
+    file: dest=/var/www/ state=directory owner=www-data group=www-data mode=0700
