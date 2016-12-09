@@ -1,3 +1,5 @@
 download_dir: /tmp
 solr_dir: /opt/solr
 solr_version: 6.1.0
+http_port: 8082
+domain: lampstack.dev
