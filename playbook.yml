@@ -104,6 +104,14 @@
     notify:
       - restart apache2
 
+# Synchronize passing in extra rsync options
+  - synchronize:
+      src: /Library/WebServer/Documents/ds-ansible
+      dest: /var/www/{{ domain }}
+      rsync_opts:
+        - "--no-motd"
+        - "--exclude=.git"
+
   handlers:
     - name: restart apache2
       service:
