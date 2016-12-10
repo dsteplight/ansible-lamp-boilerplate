@@ -36,16 +36,17 @@
       db: test
       state: absent
 
-  - name: Create a new database with name 'this_is_a_dummy_database'
+  - name: Create a new database with name {{ db_name }}
     mysql_db:
-      name: this_is_a_dummy_data_database
+      name: "{{ db_name }}"
       state: present
 
   - name: creating an user with admin priviledges
-    mysql_user: 
-      name: admin 
-      password: admin
-      priv: '*.*:ALL,GRANT'
+    mysql_user:
+      name: "{{ db_user }}"
+      password: "{{db_password}}"
+      priv: "{{ db_priv }}"
+      host: "{{ db_host }}"
       state: present
 
 

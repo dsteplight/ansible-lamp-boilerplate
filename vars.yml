@@ -3,3 +3,8 @@ solr_dir: /opt/solr
 solr_version: 6.1.0
 http_port: 8082
 domain: lampstack.dev
+db_name: lampstack_dev_db
+db_user: admin
+db_password: admin
+db_priv: '*.*:ALL,GRANT'
+db_host: localhost
