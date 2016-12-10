@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
     ansible.playbook = "playbook.yml"
   end
 
-  config.vm.define "app" do |app|
+  config.vm.define "lampstack" do |app|
     app.vm.hostname = "lampstack.dev"
     app.vm.network  :private_network, ip: "192.168.60.6"
   end
